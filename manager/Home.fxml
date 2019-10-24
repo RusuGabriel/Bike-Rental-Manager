@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" styleClass="root" stylesheets="@light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.HomeController">
+   <children>
+      <Button id="record-sales" layoutX="53.0" layoutY="332.0" mnemonicParsing="false" onAction="#goRegistredUsers" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@style.css" text="Registred Users" AnchorPane.bottomAnchor="447.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="975.0" AnchorPane.topAnchor="332.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="53.0" layoutY="390.0" mnemonicParsing="false" onAction="#goBicycleStock" prefHeight="51.0" prefWidth="302.0" style="-fx-border-radius: 20; -fx-background-radius: 20px;" text="Bicycle Stock" AnchorPane.bottomAnchor="389.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="975.0" AnchorPane.topAnchor="390.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="51.0" layoutY="451.0" mnemonicParsing="false" onAction="#goRentalInvoices" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" text="Rental Invoices" AnchorPane.bottomAnchor="328.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="977.0" AnchorPane.topAnchor="451.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="128.0" fitWidth="332.0" layoutX="45.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="53.0">
+         <image>
+            <Image url="@bike-logo.png" />
+         </image>
+      </ImageView>
+      <PieChart fx:id="pieChart" layoutX="429.0" layoutY="91.0" prefHeight="720.0" prefWidth="863.0" title="Types of Bikes " AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="91.0" />
+      <Separator layoutX="404.0" orientation="VERTICAL" prefHeight="830.0" prefWidth="0.0" />
+      <Label layoutX="439.0" layoutY="43.0" prefHeight="35.0" prefWidth="195.0" text="Usefull Statistics:" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button id="round-red" layoutX="53.0" layoutY="270.0" mnemonicParsing="false" onAction="#goRentalInvoices" prefHeight="44.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@style.css" text="Search">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="53.0" layoutY="604.0" text="App Apparence:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="70.0" layoutY="639.0" text="Background Themes:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox layoutX="109.0" layoutY="666.0" prefHeight="31.0" prefWidth="190.0" />
+      <Label layoutX="70.0" layoutY="707.0" text="Buttons Themes:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox layoutX="109.0" layoutY="734.0" prefHeight="31.0" prefWidth="190.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" styleClass="root" stylesheets="@light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.UserController">
+   <children>
+      <Button layoutX="1074.0" layoutY="786.0" mnemonicParsing="false" onAction="#deleteRecord" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" text="Delete" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="1074.0" AnchorPane.rightAnchor="192.0" AnchorPane.topAnchor="786.0" />
+      <Button layoutX="1013.0" layoutY="786.0" mnemonicParsing="false" onAction="#addRecord" style="-fx-border-radius: 20px; -fx-background-radius: 20;" text="Add" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="1013.0" AnchorPane.rightAnchor="268.0" AnchorPane.topAnchor="786.0" />
+      <TableView fx:id="table" editable="true" layoutX="21.0" layoutY="84.0" prefHeight="655.0" prefWidth="1283.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="84.0">
+        <columns>
+          <TableColumn fx:id="firstNameCol" prefWidth="126.0" resizable="false" text="First Name" />
+          <TableColumn fx:id="secondNameCol" prefWidth="127.0" resizable="false" text="Second Name" />
+            <TableColumn fx:id="cnpCol" prefWidth="91.0" resizable="false" text="CNP" />
+            <TableColumn fx:id="sexCol" prefWidth="47.0" resizable="false" text="Sex" />
+            <TableColumn fx:id="identityNumberCol" prefWidth="134.0" resizable="false" text="Identity Card Nr." />
+            <TableColumn fx:id="identitySeriesCol" prefWidth="149.0" resizable="false" text="Identity Card Series" />
+            <TableColumn fx:id="countryCol" prefWidth="143.0" resizable="false" text="Country" />
+            <TableColumn fx:id="cityCol" prefWidth="141.0" resizable="false" text="City" />
+            <TableColumn fx:id="stateCol" prefWidth="117.0" resizable="false" text="State" />
+            <TableColumn fx:id="streetCol" prefWidth="95.0" resizable="false" text="Street" />
+            <TableColumn fx:id="streetNumberCol" prefWidth="107.0" resizable="false" text="Street Nr." />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TextField fx:id="cityField" alignment="TOP_CENTER" layoutX="281.0" layoutY="792.0" prefHeight="19.0" prefWidth="161.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="888.0" AnchorPane.topAnchor="792.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <Button layoutX="1153.0" layoutY="786.0" mnemonicParsing="false" onAction="#goHome" prefHeight="29.0" prefWidth="152.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" text="Go Home" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="1153.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="786.0" />
+      <Label layoutX="567.0" layoutY="26.0" prefHeight="40.0" prefWidth="199.0" text="Registred Users" AnchorPane.bottomAnchor="761.0" AnchorPane.leftAnchor="567.0" AnchorPane.rightAnchor="563.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="244.0" layoutY="792.0" prefHeight="19.0" prefWidth="32.0" text="City:" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="244.0" AnchorPane.rightAnchor="1054.0" AnchorPane.topAnchor="787.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="852.0" layoutY="787.0" prefHeight="30.0" prefWidth="64.0" text="Street Nr.:" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="852.0" AnchorPane.rightAnchor="414.0" AnchorPane.topAnchor="787.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="660.0" layoutY="788.0" prefHeight="30.0" prefWidth="40.0" text="Street:" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="660.0" AnchorPane.rightAnchor="630.0" AnchorPane.topAnchor="787.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="streetNumberField" alignment="TOP_CENTER" layoutX="922.0" layoutY="792.0" prefHeight="19.0" prefWidth="81.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="922.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="792.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <TextField fx:id="streetField" alignment="TOP_CENTER" layoutX="713.0" layoutY="793.0" prefHeight="19.0" prefWidth="135.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="713.0" AnchorPane.rightAnchor="482.0" AnchorPane.topAnchor="792.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <TextField fx:id="cardSeriesField" alignment="TOP_CENTER" layoutX="1241.0" layoutY="753.0" prefHeight="19.0" prefWidth="64.0" promptText="2-letters" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="1241.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <TextField fx:id="cardNumberField" alignment="TOP_CENTER" layoutX="988.0" layoutY="753.0" prefHeight="19.0" prefWidth="118.0" promptText="enter 6 digits number" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="988.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <TextField fx:id="cnpField" alignment="TOP_CENTER" layoutX="612.0" layoutY="755.0" prefHeight="19.0" prefWidth="135.0" promptText="enter 13 digits number" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="612.0" AnchorPane.rightAnchor="583.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <TextField fx:id="secondNameField" alignment="TOP_CENTER" layoutX="409.0" layoutY="755.0" prefHeight="19.0" prefWidth="152.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="409.0" AnchorPane.rightAnchor="769.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <TextField fx:id="firstNameField" alignment="TOP_CENTER" layoutX="98.0" layoutY="755.0" prefHeight="19.0" prefWidth="199.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="1033.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
+      <Label layoutX="1113.0" layoutY="753.0" prefHeight="19.0" prefWidth="128.0" text="Identity Card Series:" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="1113.0" AnchorPane.rightAnchor="89.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="755.0" prefHeight="19.0" prefWidth="87.0" text="First Name:" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="1221.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="305.0" layoutY="754.0" prefHeight="19.0" prefWidth="97.0" text="Second Name:" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="305.0" AnchorPane.rightAnchor="928.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="570.0" layoutY="753.0" prefHeight="20.0" prefWidth="39.0" text="CNP:" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="570.0" AnchorPane.rightAnchor="720.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="844.0" layoutY="753.0" prefHeight="19.0" prefWidth="143.0" text="Identity Card Number:" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="844.0" AnchorPane.rightAnchor="343.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="755.0" layoutY="753.0" text="Sex:" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="755.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="sexField" alignment="TOP_CENTER" layoutX="788.0" layoutY="751.0" prefHeight="23.0" prefWidth="49.0" promptText="1 letter" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="788.0" AnchorPane.rightAnchor="493.0" AnchorPane.topAnchor="753.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="countryField" alignment="TOP_CENTER" layoutX="91.0" layoutY="790.0" prefHeight="19.0" prefWidth="143.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="19.0" AnchorPane.topAnchor="792.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <Label layoutX="22.0" layoutY="791.0" prefHeight="20.0" prefWidth="58.0" text="Country:" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="1250.0" AnchorPane.topAnchor="787.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="stateField" alignment="TOP_CENTER" layoutX="505.0" layoutY="793.0" prefHeight="23.0" prefWidth="143.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="505.0" AnchorPane.rightAnchor="682.0" AnchorPane.topAnchor="792.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <Label layoutX="465.0" layoutY="791.0" prefHeight="20.0" prefWidth="40.0" text="State:" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="465.0" AnchorPane.rightAnchor="825.0" AnchorPane.topAnchor="787.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" styleClass="root" stylesheets="@dracula.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.BikeController">
+   <children>
+      <ImageView fitHeight="206.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+         <image>
+            <Image url="@logo3.png" />
+         </image></ImageView>
+      <Separator layoutX="220.0" orientation="VERTICAL" prefHeight="830.0" prefWidth="195.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="915.0" AnchorPane.topAnchor="0.0" />
+      <Button id="green" layoutX="14.0" layoutY="242.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="200.0" stylesheets="@style.css" text="Biciclete" AnchorPane.leftAnchor="14.0" />
+      <Button id="green" layoutX="14.0" layoutY="301.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="200.0" stylesheets="@style.css" text="Clienti" AnchorPane.leftAnchor="14.0" />
+      <Button id="green" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="200.0" stylesheets="@style.css" text="Branduri" AnchorPane.leftAnchor="14.0" />
+      <Button id="green" layoutX="14.0" layoutY="421.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="200.0" stylesheets="@style.css" text="Inchirieri" AnchorPane.leftAnchor="14.0" />
+      <Button id="green" layoutX="14.0" layoutY="482.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="200.0" stylesheets="@style.css" text="Categorii" AnchorPane.leftAnchor="14.0" />
+      <TableView fx:id="table" layoutX="330.0" layoutY="104.0" prefHeight="661.0" prefWidth="983.0">
+        <columns>
+          <TableColumn fx:id="brandCol" onEditCommit="#commitChangeBrand" prefWidth="297.0" resizable="false" text="Stare Bicicleta" />
+          <TableColumn fx:id="sizeCol" onEditCommit="#commitChangeMarime" prefWidth="120.0" resizable="false" text="Marime" />
+            <TableColumn fx:id="colorCol" onEditCommit="#commitChangeCuloare" prefWidth="279.0" resizable="false" text="Culoare" />
+            <TableColumn fx:id="weightCol" onEditCommit="#commitChangeDiameter" prefWidth="206.0" resizable="false" text="Greutate Maxima" />
+        </columns>
+      </TableView>
+      <Label layoutX="675.0" layoutY="60.0" text="Gestiunea Bicicletelor" AnchorPane.topAnchor="60.0">
+         <font>
+            <Font name="Verdana Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button id="green" layoutX="1071.0" layoutY="714.0" mnemonicParsing="false" onAction="#deleteData" stylesheets="@style.css" text="Delete" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="7.0" />
+      <Button id="green" layoutX="1011.0" layoutY="714.0" mnemonicParsing="false" onAction="#addData" stylesheets="@style.css" text="Add" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="82.0" />
+      <ToggleButton layoutX="1030.0" layoutY="14.0" mnemonicParsing="false" onAction="#changeMode" text="Light Mode" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Label layoutX="386.0" layoutY="790.0" text="Brand:" />
+      <Label layoutX="638.0" layoutY="790.0" text="Marime:" />
+      <Label layoutX="830.0" layoutY="790.0" text="Culoare:" />
+      <Label layoutX="1006.0" layoutY="790.0" text="Greutate:" />
+      <TextField fx:id="brandTxt" layoutX="435.0" layoutY="785.0" prefHeight="31.0" prefWidth="189.0" promptText="Numele producatorului" />
+      <TextField fx:id="sizeTxt" layoutX="702.0" layoutY="785.0" prefHeight="31.0" prefWidth="97.0" promptText="Marime(L)" />
+      <TextField fx:id="colorTxt" layoutX="895.0" layoutY="785.0" prefHeight="31.0" prefWidth="97.0" promptText="Colare" />
+      <TextField fx:id="weightTxt" layoutX="1079.0" layoutY="785.0" prefHeight="31.0" prefWidth="97.0" promptText="in kg" />
+   </children>
+</AnchorPane>
