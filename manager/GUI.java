@@ -18,7 +18,7 @@ public class GUI extends Application {
     public static final int REGISTRED_BIKES = 0;
 
     public static void main(String[] args) {
-        loadResourcesFrom("D:\\Proiecte\\Bike Rental Manager\\src\\Views");
+        loadResourcesFrom("D:\\Proiecte\\Bike Rental Manager\\src\\manager");
         launch(args);
     }
 

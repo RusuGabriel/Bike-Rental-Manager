@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="206.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <image>
-            <Image url="@logo3.png" />
+            <Image url="@../resources/images/logo.png" />
          </image></ImageView>
       <Separator layoutX="220.0" orientation="VERTICAL" prefHeight="830.0" prefWidth="195.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="915.0" AnchorPane.topAnchor="0.0" />
       <Button id="green" layoutX="14.0" layoutY="242.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="200.0" stylesheets="@style.css" text="Biciclete" AnchorPane.leftAnchor="14.0" />

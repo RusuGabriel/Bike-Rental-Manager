@@ -18,7 +18,7 @@ public class User {
     }
 
     public User(String[] args) {
-        this(Integer.parseInt(args[0]), args[1], args[2], new IdentityCard(args[3], args[4].charAt(0), args[5], Integer.parseInt(args[6])),new Address(args[7],args[8],args[9],args[10],Integer.parseInt(args[11])));
+        this(Integer.parseInt(args[0]), args[1], args[2], new IdentityCard(args[3], args[4].charAt(0), args[5], Integer.parseInt(args[6])), new Address(args[7], args[8], args[9], args[10], Integer.parseInt(args[11])));
     }
 
     public IdentityCard getUserCard() {
@@ -77,23 +77,19 @@ public class User {
         return address.getCity();
     }
 
-    public String getState()
-    {
+    public String getState() {
         return address.getState();
     }
 
-    public void setState(String state)
-    {
+    public void setState(String state) {
         address.setState(state);
     }
 
-    public String getCountry()
-    {
+    public String getCountry() {
         return address.getCountry();
     }
 
-    public void setCountry(String country)
-    {
+    public void setCountry(String country) {
         address.setCountry(country);
     }
 
@@ -102,9 +98,8 @@ public class User {
         return userID;
     }
 
-    public String getSex()
-    {
-        return userCard.getSex()+"";
+    public String getSex() {
+        return userCard.getSex() + "";
     }
 
     public void setSex(char sex) {
@@ -121,12 +116,12 @@ public class User {
         result.append("'" + this.getFirstName() + "',");
         result.append("'" + this.getSecondName() + "',");
         result.append("'" + this.getCNP() + "',");
-        result.append("'"+this.getSex()+"',");
+        result.append("'" + this.getSex() + "',");
         result.append("'" + this.getSeries() + "',");
         result.append(this.getNumber() + ",");
-        result.append("'"+this.getCountry()+"',");
+        result.append("'" + this.getCountry() + "',");
         result.append("'" + this.getCity() + "',");
-        result.append("'"+this.getState()+"',");
+        result.append("'" + this.getState() + "',");
         result.append("'" + this.getStreet() + "',");
         result.append(this.getStreetNumber().toString());
 

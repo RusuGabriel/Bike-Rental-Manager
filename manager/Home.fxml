@@ -26,7 +26,7 @@
       </Button>
       <ImageView fitHeight="128.0" fitWidth="332.0" layoutX="45.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="53.0">
          <image>
-            <Image url="@bike-logo.png" />
+            <Image url="@../resources/images/bike-logo.png" />
          </image>
       </ImageView>
       <PieChart fx:id="pieChart" layoutX="429.0" layoutY="91.0" prefHeight="720.0" prefWidth="863.0" title="Types of Bikes " AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="91.0" />
