@@ -1,4 +1,4 @@
-<h1><center>Bike Rental Manager</center></h1>
+<h1 align="center">Bike Rental Manager</h1>
 <p align="justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Everything you need to rent your bikes. Manage your inventory, reservations, payments, maintenance, waivers, deliveries, tracking and reporting. Includes free online bookings with live availability to grow your rentals.</p>
 
 
@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Prerequisites
 To run the app on your computer you must have:<br>
 - Java Development Kit [Oracle Website.](https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html "Oracle's JDK(13) page")
-- Java special effects [OpenFX Website](https://gluonhq.com/products/javafx/ "Java FX(13) page")
+- Java special effects [OpenFX Website](https://openjfx.io/ "Java FX(13) page")
 
 ## Installing
 A step by step series of examples that tell you how to get a development env running.
