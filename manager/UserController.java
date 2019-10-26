@@ -187,9 +187,15 @@ public class UserController implements Initializable {
 
 
     private void loadData() {
-        Database database = Database.getInstance();
-        database.loadFrom(TABLE_NAME, UserRepository.getInstance());
-        table.getItems().addAll(UserRepository.getInstance().getData());
+        Thread loadThread = new Thread() {
+            @Override
+            public void run() {
+                Database database = Database.getInstance();
+                database.loadFrom(TABLE_NAME,UserRepository.getInstance());
+                table.getItems().addAll(UserRepository.getInstance().getData());
+            }
+        };
+        loadThread.start();
     }
 
     public void commitChangeFirstName(Event e) {

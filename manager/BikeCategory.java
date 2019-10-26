@@ -1,21 +1,53 @@
 package manager;
 
 public class BikeCategory {
-    private int primary_key;
-    private String brandName;
+    private int primaryKey;
+    private String category;
 
     public BikeCategory() {
     }
 
-    public BikeCategory(String args) {
-        brandName = args;
+    public BikeCategory(int pK,String category)
+    {
+        primaryKey = pK;
+        this.category = category;
     }
 
-    public String getBrandName() {
-        return brandName;
+    public BikeCategory(String[] args) {
+        primaryKey = Integer.parseInt(args[0]);
+        category = args[1];
     }
 
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getPrimaryKey() {
+        return primaryKey;
+    }
+
+    public void setPrimaryKey(int primaryKey) {
+        this.primaryKey = primaryKey;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        else if (getClass() != obj.getClass())
+            return false;
+        else {
+            BikeCategory bC = (BikeCategory) obj;
+            return bC.getCategory() == getCategory();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "'"+category+"'";
     }
 }

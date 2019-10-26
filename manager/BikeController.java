@@ -20,13 +20,13 @@ import javafx.collections.*;
 import javafx.geometry.*;
 import javafx.util.converter.*;
 
-public class BikeController implements Initializable, Runnable {
-
+public class BikeController implements Initializable {
+    private static final String TABLE_NAME = "Bike";
 
     @FXML
-    private TableColumn<Bike, String> sizeCol;
+    private TableColumn<Bike, String> categoryCol;
     @FXML
-    private TextField sizeTxt;
+    private TextField categoryTxt;
 
     @FXML
     private TableColumn<Bike, String> brandCol;
@@ -39,9 +39,9 @@ public class BikeController implements Initializable, Runnable {
     private TextField colorTxt;
 
     @FXML
-    private TableColumn<Bike, Double> weightCol;
+    private TableColumn<Bike, Integer> speedCol;
     @FXML
-    private TextField weightTxt;
+    private TextField speedTxt;
 
     @FXML
     private TableView<Bike> table;
@@ -49,44 +49,56 @@ public class BikeController implements Initializable, Runnable {
     private static Parent root;
 
     public void initialize(URL url, ResourceBundle rb) {
-        Thread myThread = new Thread(this);
-        myThread.start();
+        loadData();
         brandCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("Brand"));
         brandCol.setCellFactory(TextFieldTableCell.forTableColumn());
         brandCol.setOnEditCommit(e -> commitChangeBrand(e));
 
-        colorCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("Culoare"));
+        colorCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("Color"));
         colorCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        colorCol.setOnEditCommit(e -> commitChangeCuloare(e));
+        colorCol.setOnEditCommit(e -> commitChangeColor(e));
 
-        sizeCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("Marime"));
-        sizeCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        sizeCol.setOnEditCommit(e -> commitChangeMarime(e));
+        categoryCol.setCellValueFactory(new PropertyValueFactory<Bike, String>("Category"));
+        categoryCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        categoryCol.setOnEditCommit(e -> commitChangeCategory(e));
 
-        weightCol.setCellValueFactory(new PropertyValueFactory<Bike, Double>("Diameter"));
-        weightCol.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-        weightCol.setOnEditCommit(e -> commitChangeDiameter(e));
+        speedCol.setCellValueFactory(new PropertyValueFactory<Bike, Integer>("Speed"));
+        speedCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        speedCol.setOnEditCommit(e -> commitChangeSpeed(e));
         table.setEditable(true);
-//        Database database = Database.getInstance();
-//        Database.loadFrom("U", UserRepository.getInstance());
-//        long estimatedTime = System.currentTimeMillis() - startTime;
-//        System.out.println("Estimated time: "+estimatedTime);
 
     }
 
     @FXML
     public void addData(ActionEvent e) {
         Bike b = new Bike();
-        //b.setBrand(brandTxt.getText());
-        //b.setCuloare(colorTxt.getText());
-        //b.setMarime(sizeTxt.getText());
-        //b.setDiameter(Double.parseDouble(weightTxt.getText()));
+        b.setBrand(brandTxt.getText());
+        b.setColor(colorTxt.getText());
+        b.setSpeed(Integer.parseInt(speedTxt.getText()));
+        BikeCategory bC = new BikeCategory();
+        bC.setCategory(categoryTxt.getText());
+        BikeBrand bB = new BikeBrand();
+        bB.setBrand(brandTxt.getText());
+        b.setBikeBrand(bB);
+        b.setBikeCategory(bC);
         table.getItems().add(b);
+        Thread add = new Thread(){
+            @Override
+            public void run() {
+                Database database = Database.getInstance();
+                database.saveTo(TABLE_NAME,b);
+            }
+        };
+        add.start();
+        clearFields();
+    }
+
+    private void clearFields()
+    {
         brandTxt.clear();
         colorTxt.clear();
-        sizeTxt.clear();
-        weightTxt.clear();
-
+        categoryTxt.clear();
+        speedTxt.clear();
     }
 
     public void deleteData(ActionEvent e) {
@@ -98,43 +110,49 @@ public class BikeController implements Initializable, Runnable {
             items.remove(b);
     }
 
-    public void changeMode(ActionEvent e) {
-        root = GUI.getParent();
-        if (root == null) {
-            System.out.println("Nu merge");
-            return;
-        }
-        GUI.getInstance().display(GUI.REGISTRED_USERS);
+    @FXML
+    public void commitChangeCategory(Event e){
+
     }
 
     @FXML
-    public void commitChangeDiameter(Event e) {
-        TableColumn.CellEditEvent<Bike, Double> ce;
-        ce = (TableColumn.CellEditEvent<Bike, Double>) e;
+    public void commitChangeSpeed(Event e) {
+        TableColumn.CellEditEvent<Bike, Integer> ce;
+        ce = (TableColumn.CellEditEvent<Bike, Integer>) e;
         Bike b = ce.getRowValue();
-        //b.setDiameter(ce.getNewValue());
+        b.setSpeed(ce.getNewValue());
     }
 
     @FXML
-    public void commitChangeMarime(Event e) {
+    public void commitChangeColor(Event e) {
+        TableColumn.CellEditEvent<Bike, String> ce;
+        ce = (TableColumn.CellEditEvent<Bike, String>) e;
+        Bike b = ce.getRowValue();
+        b.setColor(ce.getNewValue());
     }
 
+
     @FXML
-    public void commitChangeCuloare(Event e) {
+    private void goHome(ActionEvent e) {
+        GUI.display(GUI.HOME);
     }
+
 
     @FXML
     public void commitChangeBrand(Event e) {
     }
 
-    @Override
-    public void run() {
-        long startTime = System.currentTimeMillis();
-        Database database = Database.getInstance();
-        Database.loadFrom("B", BikeRepository.getInstance());
-        long estimatedTime = System.currentTimeMillis() - startTime;
-        System.out.println("Estimated time: " + estimatedTime);
-        table.getItems().addAll(BikeRepository.getInstance().getData());
+    private void loadData(){
+        Thread loadThread = new Thread(){
+            @Override
+            public void run() {
+                Database database = Database.getInstance();
+                database.loadFrom(TABLE_NAME,BikeRepository.getInstance());
+                table.getItems().addAll(BikeRepository.getInstance().getData());
+            }
+        };
+        loadThread.start();
     }
+
 }
 

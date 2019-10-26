@@ -40,7 +40,6 @@ public class Database {
     public static void loadFrom(String tableName, UserRepository data) {
         if (!data.getInstance().getData().isEmpty())
             return;
-        ResultSet resultSet = null;
         int columnsNumber = 0;
 
         try {
@@ -63,14 +62,17 @@ public class Database {
     }
 
     public static void loadFrom(String tableName, BikeRepository data) {
+        if(!data.getInstance().getData().isEmpty())
+            return;
         //TODO: Modify this method to join the BikeBrand BikeCategory and BikeTable into a single unit
-        ResultSet resultSet = null;
         int columnsNumber = 0;
 
         try {
             Statement statement = instance.connection.createStatement();
             // Create and execute a SELECT SQL statement.
-            String selectSql = "SELECT * FROM [" + tableName + "];";
+            String selectSql = "select b.Bike_ID 'bike_ID',b.Color 'Color' , b.Speeds 'Speed',bB.Brand_ID 'brand_ID' ,bB.BrandName 'Brand', bC.Category_ID 'category_Id',bC.CategoryName 'Category'" +
+                    "     from BikeBrands bB, BikeCategory bC, Bike b\n" +
+                    "     where b.Brand_ID = bB.Brand_ID and b.Category_ID = bC.Category_ID";
             resultSet = statement.executeQuery(selectSql);
 
             ResultSetMetaData rsmd = resultSet.getMetaData();
@@ -78,8 +80,7 @@ public class Database {
 
             // Print results from select statement
             while (resultSet.next()) {
-                System.out.println("Number of columns: " + columnsNumber);
-                for (int i = 3; i <= columnsNumber; i++)
+                for (int i = 1; i <= columnsNumber; i++)
                     attributes.add(resultSet.getString(i));
                 data.getInstance().getData().add(new Bike(attributes.toArray(String[]::new)));
                 attributes.clear();
@@ -91,31 +92,34 @@ public class Database {
     }
 
     public static void saveTo(String tableName, Bike newData) {
-        //TODO:Implement the save opperation for bikes
-
-    }
-
-    public static void saveTo(String tableName, User newData) {
         try {
             Statement statement = instance.connection.createStatement();
+            if (!BikeRepository.getInstance().contains(newData.getBikeCategory()))
+            {
+                statement.executeUpdate("INSERT INTO [" + tableName + "Category" + "] VALUES(" + newData.getBikeCategory().toString() + ")");
+                resultSet = statement.executeQuery("SELECT Category_ID FROM [BikeCategory] WHERE Category_ID = @@Identity;");
+                newData.getBikeCategory().setPrimaryKey(Integer.parseInt(resultSet.getString(1)));
+            }
+            if (!BikeRepository.getInstance().contains(newData.getBikeBrand())) {
+                statement.executeUpdate("INSERT INTO [" + tableName + "Brands" + "] VALUES(" + newData.getBikeBrand().toString() + ")");
+                resultSet = statement.executeQuery("SELECT Brand_ID FROM [BikeBrands] WHERE Brand_ID = @@Identity;");
+                newData.getBikeBrand().setPrimaryKey(Integer.parseInt(resultSet.getString(1)));
+            }
             statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData.toString() + ")");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public static void update(String tableName, String column, String value, User user) {
+    public static void saveTo(String tableName, User newData) {
         try {
             Statement statement = instance.connection.createStatement();
-            statement.executeUpdate("UPDATE [" + tableName + "] SET " + column + "=" + value + " WHERE CNP =" + user.getCNP() + ";");
+            statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData.toString() + ")");
+            resultSet = statement.executeQuery("SELECT User_ID FROM [User] WHERE User_ID = @@Identity;");
+            newData.setPrimaryKey(Integer.parseInt(resultSet.getString(1)));
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-    public static void deleteFrom(String tableName, User registredUser) {
-        //TODO: Implement the delete operation for the User
-    }
-
 }
 

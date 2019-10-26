@@ -7,19 +7,19 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" styleClass="root" stylesheets="@light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" styleClass="root" stylesheets="@../resources/styles/light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.HomeController">
    <children>
-      <Button id="record-sales" layoutX="53.0" layoutY="332.0" mnemonicParsing="false" onAction="#goRegistredUsers" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@style.css" text="Registred Users" AnchorPane.bottomAnchor="447.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="975.0" AnchorPane.topAnchor="332.0">
+      <Button id="round-red" layoutX="53.0" layoutY="332.0" mnemonicParsing="false" onAction="#goRegistredUsers" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@../resources/styles/style.css" text="Registred Users" AnchorPane.bottomAnchor="447.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="975.0" AnchorPane.topAnchor="332.0">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="53.0" layoutY="390.0" mnemonicParsing="false" onAction="#goBicycleStock" prefHeight="51.0" prefWidth="302.0" style="-fx-border-radius: 20; -fx-background-radius: 20px;" text="Bicycle Stock" AnchorPane.bottomAnchor="389.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="975.0" AnchorPane.topAnchor="390.0">
+      <Button id="round-red" layoutX="53.0" layoutY="390.0" mnemonicParsing="false" onAction="#goBicycleStock" prefHeight="51.0" prefWidth="302.0" style="-fx-border-radius: 20; -fx-background-radius: 20px;" stylesheets="@../resources/styles/style.css" text="Bicycle Stock" AnchorPane.bottomAnchor="389.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="975.0" AnchorPane.topAnchor="390.0">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="51.0" layoutY="451.0" mnemonicParsing="false" onAction="#goRentalInvoices" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" text="Rental Invoices" AnchorPane.bottomAnchor="328.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="977.0" AnchorPane.topAnchor="451.0">
+      <Button id="round-red" layoutX="51.0" layoutY="451.0" mnemonicParsing="false" onAction="#goRentalInvoices" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@../resources/styles/style.css" text="Rental Invoices" AnchorPane.bottomAnchor="328.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="977.0" AnchorPane.topAnchor="451.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -36,7 +36,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button id="round-red" layoutX="53.0" layoutY="270.0" mnemonicParsing="false" onAction="#goRentalInvoices" prefHeight="44.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@style.css" text="Search">
+      <Button id="round-red" layoutX="53.0" layoutY="270.0" mnemonicParsing="false" onAction="#goRentalInvoices" prefHeight="44.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@../resources/styles/style.css" text="Search">
          <font>
             <Font size="24.0" />
          </font>

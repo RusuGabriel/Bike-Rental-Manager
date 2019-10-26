@@ -22,7 +22,17 @@ public class BikeRepository {
         return data;
     }
 
-    public void setData(ArrayList<Bike> data) {
-        this.data = data;
+    public boolean contains(BikeCategory bC) {
+        for (Bike bike : data)
+            if (bike.getCategory().equals(bC))
+                return true;
+        return false;
+    }
+
+    public boolean contains(BikeBrand bikeBrand) {
+        for (Bike bike : data)
+            if (bike.getBrand().equals(bikeBrand))
+                return true;
+        return false;
     }
 }

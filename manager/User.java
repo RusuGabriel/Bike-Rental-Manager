@@ -1,7 +1,7 @@
 package manager;
 
 public class User {
-    private int userID;
+    private int primaryKey;
     private String firstName;
     private String secondName;
     private IdentityCard userCard;
@@ -15,6 +15,7 @@ public class User {
         this.secondName = secondName;
         this.userCard = card;
         this.address = address;
+        this.primaryKey = userID;
     }
 
     public User(String[] args) {
@@ -93,9 +94,8 @@ public class User {
         address.setCountry(country);
     }
 
-
-    public int getUserID() {
-        return userID;
+    public int getPrimaryKey() {
+        return primaryKey;
     }
 
     public String getSex() {
@@ -106,8 +106,8 @@ public class User {
         userCard.setSex(sex);
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setPrimaryKey(int primaryKey) {
+        this.primaryKey = primaryKey;
     }
 
     @Override
