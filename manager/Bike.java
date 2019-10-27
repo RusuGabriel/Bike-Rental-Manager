@@ -10,7 +10,13 @@ public class Bike {
     private BikeBrand bikeBrand;
 
     public Bike()
-    {}
+    {
+        primaryKey=0;
+        color=null;
+        speed=0;
+        bikeCategory=null;
+        bikeBrand = null;
+    }
 
     public Bike(int pK, String color, int speed, BikeBrand brand, BikeCategory category) {
         primaryKey = pK;

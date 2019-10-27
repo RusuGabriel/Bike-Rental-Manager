@@ -1,16 +1,21 @@
 package manager;
 
+import java.util.StringTokenizer;
+
 public class BikeCategory {
     private int primaryKey;
     private String category;
 
     public BikeCategory() {
+        primaryKey=0;
+        category =null;
     }
 
     public BikeCategory(int pK,String category)
     {
         primaryKey = pK;
-        this.category = category;
+        StringTokenizer stringT = new StringTokenizer(category,"' ");
+        this.category = stringT.nextToken();
     }
 
     public BikeCategory(String[] args) {
@@ -30,7 +35,7 @@ public class BikeCategory {
         return primaryKey;
     }
 
-    public void setPrimaryKey(int primaryKey) {
+    public void setPrimaryKey(Integer primaryKey) {
         this.primaryKey = primaryKey;
     }
 
@@ -42,7 +47,8 @@ public class BikeCategory {
             return false;
         else {
             BikeCategory bC = (BikeCategory) obj;
-            return bC.getCategory() == getCategory();
+
+            return bC.toString().equalsIgnoreCase(toString())||bC.getCategory().equalsIgnoreCase(getCategory());
         }
     }
 

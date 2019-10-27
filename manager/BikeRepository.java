@@ -24,14 +24,14 @@ public class BikeRepository {
 
     public boolean contains(BikeCategory bC) {
         for (Bike bike : data)
-            if (bike.getCategory().equals(bC))
+            if (bike.getBikeCategory().equals(bC))
                 return true;
         return false;
     }
 
     public boolean contains(BikeBrand bikeBrand) {
         for (Bike bike : data)
-            if (bike.getBrand().equals(bikeBrand))
+            if (bike.getBikeBrand().equals(bikeBrand))
                 return true;
         return false;
     }

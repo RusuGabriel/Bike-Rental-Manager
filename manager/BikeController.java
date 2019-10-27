@@ -72,7 +72,6 @@ public class BikeController implements Initializable {
     @FXML
     public void addData(ActionEvent e) {
         Bike b = new Bike();
-        b.setBrand(brandTxt.getText());
         b.setColor(colorTxt.getText());
         b.setSpeed(Integer.parseInt(speedTxt.getText()));
         BikeCategory bC = new BikeCategory();

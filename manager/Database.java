@@ -62,7 +62,7 @@ public class Database {
     }
 
     public static void loadFrom(String tableName, BikeRepository data) {
-        if(!data.getInstance().getData().isEmpty())
+        if (!data.getInstance().getData().isEmpty())
             return;
         //TODO: Modify this method to join the BikeBrand BikeCategory and BikeTable into a single unit
         int columnsNumber = 0;
@@ -93,19 +93,35 @@ public class Database {
 
     public static void saveTo(String tableName, Bike newData) {
         try {
+            int pK = 0;
             Statement statement = instance.connection.createStatement();
-            if (!BikeRepository.getInstance().contains(newData.getBikeCategory()))
-            {
+            if (!BikeRepository.getInstance().contains(newData.getBikeCategory())) {
+
                 statement.executeUpdate("INSERT INTO [" + tableName + "Category" + "] VALUES(" + newData.getBikeCategory().toString() + ")");
-                resultSet = statement.executeQuery("SELECT Category_ID FROM [BikeCategory] WHERE Category_ID = @@Identity;");
-                newData.getBikeCategory().setPrimaryKey(Integer.parseInt(resultSet.getString(1)));
+                resultSet = statement.executeQuery("SELECT IDENT_CURRENT ('BikeCategory') AS Current_Identity;");
+                if (resultSet.next())
+                    pK = resultSet.getInt(1);
+                newData.getBikeCategory().setPrimaryKey(pK);
+            } else {
+                resultSet = statement.executeQuery("SELECT Category_ID FROM [BikeCategory] WHERE CategoryName = " + newData.getBikeCategory().toString() + ";");
+                if (resultSet.next())
+                    pK = resultSet.getInt(1);
+                newData.getBikeCategory().setPrimaryKey(pK);
             }
             if (!BikeRepository.getInstance().contains(newData.getBikeBrand())) {
                 statement.executeUpdate("INSERT INTO [" + tableName + "Brands" + "] VALUES(" + newData.getBikeBrand().toString() + ")");
-                resultSet = statement.executeQuery("SELECT Brand_ID FROM [BikeBrands] WHERE Brand_ID = @@Identity;");
-                newData.getBikeBrand().setPrimaryKey(Integer.parseInt(resultSet.getString(1)));
+                resultSet = statement.executeQuery("SELECT IDENT_CURRENT ('BikeBrands') AS Current_Identity;");
+                if (resultSet.next())
+                    pK = resultSet.getInt(1);
+                newData.getBikeBrand().setPrimaryKey(pK);
+            } else {
+                resultSet = statement.executeQuery("SELECT Brand_ID FROM [BikeBrands] WHERE BrandName = " + newData.getBikeBrand().toString() + ";");
+                if (resultSet.next())
+                    pK = resultSet.getInt(1);
+                newData.getBikeBrand().setPrimaryKey(pK);
             }
             statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData.toString() + ")");
+            BikeRepository.getInstance().getData().add(newData);
         } catch (SQLException e) {
             e.printStackTrace();
         }
