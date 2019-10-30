@@ -64,12 +64,10 @@ public class Database {
     public static void loadFrom(String tableName, BikeRepository data) {
         if (!data.getInstance().getData().isEmpty())
             return;
-        //TODO: Modify this method to join the BikeBrand BikeCategory and BikeTable into a single unit
         int columnsNumber = 0;
 
         try {
             Statement statement = instance.connection.createStatement();
-            // Create and execute a SELECT SQL statement.
             String selectSql = "select b.Bike_ID 'bike_ID',b.Color 'Color' , b.Speeds 'Speed'," +
                     "bB.Brand_ID 'brand_ID' ,bB.BrandName 'Brand', bC.Category_ID 'category_Id',bC.CategoryName 'Category'" +
                     "from BikeBrands bB, BikeCategory bC, Bike b\n" +
@@ -122,7 +120,10 @@ public class Database {
                 newData.getBikeBrand().setPrimaryKey(pK);
             }
             statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData.toString() + ")");
-            resultSet = statement.executeQuery("SELECT IDENT_CURRENT ('BikeCategory') AS Current_Identity;");
+            resultSet = statement.executeQuery("SELECT IDENT_CURRENT ('Bike') AS Current_Identity;");
+            if(resultSet.next())
+                pK = resultSet.getInt(1);
+            newData.setPrimaryKey(pK);
             BikeRepository.getInstance().getData().add(newData);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -134,7 +135,8 @@ public class Database {
             Statement statement = instance.connection.createStatement();
             statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData.toString() + ")");
             resultSet = statement.executeQuery("SELECT User_ID FROM [User] WHERE User_ID = @@Identity;");
-            newData.setPrimaryKey(Integer.parseInt(resultSet.getString(1)));
+            if(resultSet.next())
+                newData.setPrimaryKey(resultSet.getInt(1));
         } catch (SQLException e) {
             e.printStackTrace();
         }

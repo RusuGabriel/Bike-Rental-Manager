@@ -3,6 +3,8 @@ package manager;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class BikeRepository {
     private static BikeRepository instance;
@@ -34,5 +36,14 @@ public class BikeRepository {
             if (bike.getBikeBrand().equals(bikeBrand))
                 return true;
         return false;
+    }
+
+    public static HashMap<String, Integer> getTypeStatistics() {
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        for (Bike bike : BikeRepository.getInstance().getData())
+            if (map.get(bike.getCategory()) == null)
+                map.put(bike.getCategory(), 1);
+            else map.put(bike.getCategory(), map.get(bike.getCategory()) + 1);
+        return map;
     }
 }
