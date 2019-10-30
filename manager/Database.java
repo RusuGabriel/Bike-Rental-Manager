@@ -70,9 +70,10 @@ public class Database {
         try {
             Statement statement = instance.connection.createStatement();
             // Create and execute a SELECT SQL statement.
-            String selectSql = "select b.Bike_ID 'bike_ID',b.Color 'Color' , b.Speeds 'Speed',bB.Brand_ID 'brand_ID' ,bB.BrandName 'Brand', bC.Category_ID 'category_Id',bC.CategoryName 'Category'" +
-                    "     from BikeBrands bB, BikeCategory bC, Bike b\n" +
-                    "     where b.Brand_ID = bB.Brand_ID and b.Category_ID = bC.Category_ID";
+            String selectSql = "select b.Bike_ID 'bike_ID',b.Color 'Color' , b.Speeds 'Speed'," +
+                    "bB.Brand_ID 'brand_ID' ,bB.BrandName 'Brand', bC.Category_ID 'category_Id',bC.CategoryName 'Category'" +
+                    "from BikeBrands bB, BikeCategory bC, Bike b\n" +
+                    "where b.Brand_ID = bB.Brand_ID and b.Category_ID = bC.Category_ID";
             resultSet = statement.executeQuery(selectSql);
 
             ResultSetMetaData rsmd = resultSet.getMetaData();
@@ -121,6 +122,7 @@ public class Database {
                 newData.getBikeBrand().setPrimaryKey(pK);
             }
             statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData.toString() + ")");
+            resultSet = statement.executeQuery("SELECT IDENT_CURRENT ('BikeCategory') AS Current_Identity;");
             BikeRepository.getInstance().getData().add(newData);
         } catch (SQLException e) {
             e.printStackTrace();
