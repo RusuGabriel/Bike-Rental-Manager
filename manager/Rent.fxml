@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.RentController">
+   <children>
+      <TableView fx:id="table" layoutX="20.0" layoutY="78.0" prefHeight="706.0" prefWidth="1290.0" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="78.0">
+        <columns>
+            <TableColumn fx:id="userCol" prefWidth="345.0" text="User Full Name" />
+            <TableColumn fx:id="brandCol" prefWidth="303.0" text="Brand Name" />
+          <TableColumn fx:id="startTimeCol" prefWidth="255.0" text="Start Time" />
+          <TableColumn fx:id="endTimeCol" prefWidth="255.0" text="End Time" />
+            <TableColumn fx:id="priceToPayCol" prefWidth="130.0" text="Price To Pay" />
+        </columns>
+      </TableView>
+      <Button layoutX="1124.0" layoutY="806.0" mnemonicParsing="false" onAction="#addInovice" prefHeight="31.0" prefWidth="48.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" text="Add" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button layoutX="1249.0" layoutY="795.0" mnemonicParsing="false" onAction="#goHome" prefHeight="31.0" prefWidth="61.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" text="Home" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Button layoutX="1179.0" layoutY="795.0" mnemonicParsing="false" onAction="#deleteInovice" prefHeight="31.0" prefWidth="63.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" text="Delete" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
+      <Label layoutX="580.0" layoutY="32.0" text="Rental Inovices">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userNameTxt" layoutX="118.0" layoutY="806.0" prefHeight="21.0" prefWidth="309.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0" />
+      <TextField fx:id="brandNameTxt" layoutX="525.0" layoutY="806.0" prefHeight="21.0" prefWidth="294.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0" />
+      <TextField fx:id="startTimeTxt" layoutX="893.0" layoutY="806.0" prefHeight="21.0" prefWidth="210.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0" />
+      <Label layoutX="20.0" layoutY="806.0" prefHeight="21.0" prefWidth="95.0" text="User Full Name:" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0">
+         <font>
+            <Font size="12.0" />
+         </font></Label>
+      <Label layoutX="449.0" layoutY="806.0" text="Brand Name:" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0">
+         <font>
+            <Font size="12.0" />
+         </font></Label>
+      <Label layoutX="831.0" layoutY="806.0" text="Start time:" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0">
+         <font>
+            <Font size="12.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

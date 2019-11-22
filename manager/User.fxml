@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" styleClass="root" stylesheets="@../resources/styles/light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" styleClass="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.UserController">
    <children>
       <Button layoutX="1192.0" layoutY="791.0" mnemonicParsing="false" onAction="#deleteRecord" prefHeight="19.0" prefWidth="49.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" text="Delete" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="1192.0" AnchorPane.rightAnchor="89.0" AnchorPane.topAnchor="795.0">
          <font>
@@ -145,4 +146,8 @@
          </font>
       </Label>
    </children>
+   <stylesheets>
+      <URL value="@../resources/styles/light.css" />
+      <URL value="@../resources/styles/dracula.css" />
+   </stylesheets>
 </AnchorPane>

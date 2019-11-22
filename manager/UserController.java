@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
-    private static final String TABLE_NAME = "User";
+    public static final String TABLE_NAME = "User";
     //text fields variables
     @FXML
     private TextField firstNameField;
@@ -71,6 +71,7 @@ public class UserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadData();
         firstNameCol.setCellValueFactory(new PropertyValueFactory<User, String>("FirstName"));
         firstNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
         firstNameCol.setOnEditCommit(e -> commitChangeFirstName(e));
@@ -114,7 +115,6 @@ public class UserController implements Initializable {
         sexCol.setCellValueFactory(new PropertyValueFactory<User, String>("Sex"));
         sexCol.setCellFactory(TextFieldTableCell.forTableColumn());
         sexCol.setOnEditCommit(e -> commitChangeCity(e));
-        loadData();
     }
 
     private void commitChangeCity(TableColumn.CellEditEvent<User, String> e) {

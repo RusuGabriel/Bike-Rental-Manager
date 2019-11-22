@@ -1,12 +1,12 @@
 package manager;
 
+import com.sun.javafx.scene.control.behavior.TextAreaBehavior;
 import javafx.fxml.*;
 
 import java.net.*;
 import java.sql.Time;
 import java.util.ResourceBundle;
 import java.util.Timer;
-
 import javafx.application.*;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -21,7 +21,7 @@ import javafx.geometry.*;
 import javafx.util.converter.*;
 
 public class BikeController implements Initializable {
-    private static final String TABLE_NAME = "Bike";
+    public static final String TABLE_NAME = "Bike";
 
     @FXML
     private TableColumn<Bike, String> categoryCol;
@@ -45,8 +45,6 @@ public class BikeController implements Initializable {
 
     @FXML
     private TableView<Bike> table;
-    @FXML
-    private static Parent root;
 
     public void initialize(URL url, ResourceBundle rb) {
         loadData();
@@ -120,6 +118,13 @@ public class BikeController implements Initializable {
         ce = (TableColumn.CellEditEvent<Bike, Integer>) e;
         Bike b = ce.getRowValue();
         b.setSpeed(ce.getNewValue());
+        Thread update = new Thread(){
+            @Override
+            public void run() {
+                Database.update(TABLE_NAME,b);
+            }
+        };
+        update.start();
     }
 
     @FXML
@@ -142,14 +147,11 @@ public class BikeController implements Initializable {
     }
 
     private void loadData(){
-        Thread loadThread = new Thread(){
-            @Override
-            public void run() {
-                Database database = Database.getInstance();
-                database.loadFrom(TABLE_NAME,BikeRepository.getInstance());
-                table.getItems().addAll(BikeRepository.getInstance().getData());
-            }
-        };
+        Thread loadThread = new Thread(() -> {
+            Database database = Database.getInstance();
+            database.loadFrom(TABLE_NAME,BikeRepository.getInstance());
+            table.getItems().addAll(BikeRepository.getInstance().getData());
+        });
         loadThread.start();
     }
 

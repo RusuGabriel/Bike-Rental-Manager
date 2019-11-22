@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class BikeRepository {
     private static BikeRepository instance;
@@ -36,6 +35,14 @@ public class BikeRepository {
             if (bike.getBikeBrand().equals(bikeBrand))
                 return true;
         return false;
+    }
+
+    public static int getKeyOf(String bikeBrand) {
+        for (Bike bike : BikeRepository.getInstance().getData())
+            if (bike.getBikeBrand().getBrand().equals(bikeBrand))
+                return bike.getPrimaryKey();
+        return -1;
+
     }
 
     public static HashMap<String, Integer> getTypeStatistics() {

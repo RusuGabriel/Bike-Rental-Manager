@@ -16,6 +16,7 @@ public class RentalInvoiceRepository {
         return instance;
     }
 
+
     public ArrayList<RentalInvoice> getData() {
         return data;
     }
