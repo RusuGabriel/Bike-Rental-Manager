@@ -1,8 +1,10 @@
 package manager;
 
 import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Database {
@@ -29,8 +31,8 @@ public class Database {
         return instance;
     }
 
-    public static void delete(User selected){
-        if (selected==null)
+    public static void delete(User selected) {
+        if (selected == null)
             return;
         else
             try {
@@ -45,7 +47,7 @@ public class Database {
     }
 
     public static void delete(RentalInvoice selected) {
-        if (selected==null)
+        if (selected == null)
             return;
         else
             try {
@@ -150,8 +152,7 @@ public class Database {
         try {
             int pK = 0;
             Statement statement = instance.connection.createStatement();
-            if (!BikeRepository.getInstance().contains(newData.getBikeCategory())) {
-
+            if (!Database.contains(newData, "Category")) {
                 statement.executeUpdate("INSERT INTO [" + tableName + "Category" + "] VALUES(" + newData.getBikeCategory().toString() + ")");
                 resultSet = statement.executeQuery("SELECT IDENT_CURRENT ('BikeCategory') AS Current_Identity;");
                 if (resultSet.next())
@@ -163,7 +164,7 @@ public class Database {
                     pK = resultSet.getInt(1);
                 newData.getBikeCategory().setPrimaryKey(pK);
             }
-            if (!BikeRepository.getInstance().contains(newData.getBikeBrand())) {
+            if (!Database.contains(newData, "Brand")) {
                 statement.executeUpdate("INSERT INTO [" + tableName + "Brands" + "] VALUES(" + newData.getBikeBrand().toString() + ")");
                 resultSet = statement.executeQuery("SELECT IDENT_CURRENT ('BikeBrands') AS Current_Identity;");
                 if (resultSet.next())
@@ -175,7 +176,7 @@ public class Database {
                     pK = resultSet.getInt(1);
                 newData.getBikeBrand().setPrimaryKey(pK);
             }
-            statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData.toString() + ")");
+            statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData.toString() + ",null);");
             resultSet = statement.executeQuery("SELECT IDENT_CURRENT ('Bike') AS Current_Identity;");
             if (resultSet.next())
                 pK = resultSet.getInt(1);
@@ -186,6 +187,30 @@ public class Database {
         }
     }
 
+    private static boolean contains(Bike newData, String category) {
+        try {
+            Statement statement = instance.connection.createStatement();
+            if (category.equals("Category")) {
+                resultSet = statement.executeQuery("select B.Bike_ID, BC.CategoryName from Bike B join BikeCategory BC on B.Category_ID = BC.Category_ID where BC.CategoryName = '" + newData.getCategory() + "';");
+                if (!resultSet.next()) {
+                    resultSet = statement.executeQuery("select CategoryName  from BikeCategory where CategoryName = '" + newData.getCategory() + "';");
+                    if (!resultSet.next())
+                        return false;
+                }
+            } else {
+                resultSet = statement.executeQuery("select B.Bike_ID, BB.BrandName from Bike B join BikeBrands BB on B.Brand_ID = BB.Brand_ID where BB.BrandName = '" + newData.getBrand() + "';");
+                if (!resultSet.next()) {
+                    resultSet = statement.executeQuery("select BrandName from BikeBrands where BrandName = '" + newData.getBrand() + "';");
+                    if (!resultSet.next())
+                        return false;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }
+        return true;
+    }
 
 
     public static void saveTo(String tableName, User newData) {
@@ -227,7 +252,7 @@ public class Database {
         try {
             Statement statement = instance.connection.createStatement();
             System.out.println("update bike");
-            statement.executeUpdate("UPDATE BIKE set "+updatedBike.update()+" where Bike_ID = "+updatedBike.getPrimaryKey()+";");
+            statement.executeUpdate("UPDATE BIKE set " + updatedBike.update() + " where Bike_ID = " + updatedBike.getPrimaryKey() + ";");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println(e.getStackTrace());
@@ -243,5 +268,7 @@ public class Database {
             System.out.println(e.getStackTrace());
         }
     }
+
+
 }
 

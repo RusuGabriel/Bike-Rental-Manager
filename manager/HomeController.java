@@ -40,7 +40,8 @@ public class HomeController implements Initializable {
 
     private void getStatisticDetails() {
         Database database = Database.getInstance();
-        Database.loadFrom("Bike", BikeRepository.getInstance());
+        BikeRepository.getInstance();
+        Database.loadFrom("Bike",BikeRepository.getInstance());
         HashMap<String, Integer> hashData = BikeRepository.getTypeStatistics();
         for (String elem : hashData.keySet())
             chartData.add(new PieChart.Data(elem, hashData.get(elem)));
