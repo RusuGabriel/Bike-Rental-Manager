@@ -24,7 +24,7 @@
          <font>
             <Font size="11.0" />
          </font></Button>
-      <Button layoutX="1179.0" layoutY="795.0" mnemonicParsing="false" onAction="#deleteInovice" prefHeight="31.0" prefWidth="63.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" text="Delete" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0">
+      <Button layoutX="1179.0" layoutY="795.0" mnemonicParsing="false" onAction="#deleteInvoice" prefHeight="31.0" prefWidth="63.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" text="Delete" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="795.0">
          <font>
             <Font size="11.0" />
          </font></Button>

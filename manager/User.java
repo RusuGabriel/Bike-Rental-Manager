@@ -128,4 +128,21 @@ public class User {
         System.out.println(result.toString());
         return result.toString();
     }
+
+    public String update() {
+        StringBuilder update = new StringBuilder();
+        update.append("First_Name = '"+firstName+"',");
+        update.append("Second_Name = '" + this.getSecondName() + "',");
+        update.append("CNP = '" + this.getCNP() + "',");
+        update.append("Sex = '" + this.getSex() + "',");
+        update.append("IdentityCardSeries = '" + this.getSeries() + "',");
+        update.append("IdentityCardNumber = "+this.getNumber() + ",");
+        update.append("Country = '" + this.getCountry() + "',");
+        update.append("City = '" + this.getCity() + "',");
+        update.append("State = '" + this.getState() + "',");
+        update.append("Street = '" + this.getStreet() + "',");
+        update.append("StreetNumber ="+this.getStreetNumber().toString());
+
+        return  update.toString();
+    }
 }

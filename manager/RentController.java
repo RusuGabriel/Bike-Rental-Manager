@@ -1,5 +1,6 @@
 package manager;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.DoubleStringConverter;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -80,6 +82,15 @@ public class RentController implements Initializable {
 
 
     private void commitChangePrice(Event e) {
+        TableColumn.CellEditEvent<RentalInvoice, Double> ce;
+        ce = (TableColumn.CellEditEvent<RentalInvoice, Double>) e;
+        RentalInvoice ri = ce.getRowValue();
+        ri.setCharge(ce.getNewValue());
+        table.refresh();
+        Thread update = new Thread(() -> {
+            Database.update(ri);
+        });
+        update.start();
 
     }
 
@@ -89,7 +100,7 @@ public class RentController implements Initializable {
         RentalInvoice ri = ce.getRowValue();
         ri.setEndDate(GUI.sdf.format(new Date()));
         table.refresh();
-        Thread update = new Thread(()->{
+        Thread update = new Thread(() -> {
             Database.update(ri);
         });
         update.start();
@@ -97,15 +108,23 @@ public class RentController implements Initializable {
     }
 
     private void commitChangeStartTime(Event e) {
-
+        TableColumn.CellEditEvent<RentalInvoice, String> ce;
+        ce = (TableColumn.CellEditEvent<RentalInvoice, String>) e;
+        RentalInvoice ri = ce.getRowValue();
+        ri.setStartDate(GUI.sdf.format(new Date()));
+        table.refresh();
+        Thread update = new Thread(() -> {
+            Database.update(ri);
+        });
+        update.start();
     }
 
     private void loadData() {
         Thread loadThread = new Thread(() -> {
             Database database = Database.getInstance();
             database.loadFrom(TABLE_NAME, RentalInvoiceRepository.getInstance());
-            Database.loadFrom(BikeController.TABLE_NAME,BikeRepository.getInstance());
-            Database.loadFrom(UserController.TABLE_NAME,UserRepository.getInstance());
+            Database.loadFrom(BikeController.TABLE_NAME, BikeRepository.getInstance());
+            Database.loadFrom(UserController.TABLE_NAME, UserRepository.getInstance());
             table.getItems().addAll(RentalInvoiceRepository.getInstance().getData());
         });
         loadThread.start();
@@ -141,7 +160,16 @@ public class RentController implements Initializable {
     }
 
     @FXML
-    private void deleteInovice(ActionEvent e) {
+    private void deleteInvoice(ActionEvent e) {
+        ObservableList<RentalInvoice> selected, items;
+        items = table.getItems();
+        selected = table.getSelectionModel().getSelectedItems();
+        Database.delete(selected.get(0));
+        ArrayList<RentalInvoice> data = RentalInvoiceRepository.getInstance().getData();
+        data.remove(selected.get(0));
+        items.remove(selected.get(0));
 
+        table.refresh();
     }
+
 }

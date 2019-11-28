@@ -1,6 +1,7 @@
 package manager;
 
 import com.sun.javafx.geom.transform.Identity;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
@@ -118,12 +120,27 @@ public class UserController implements Initializable {
     }
 
     private void commitChangeCity(TableColumn.CellEditEvent<User, String> e) {
+        TableColumn.CellEditEvent<User, String> ce;
+        ce = (TableColumn.CellEditEvent<User, String>) e;
+        User u = ce.getRowValue();
+        u.getAddress().setCity(ce.getNewValue());
+        Database.update(u);
     }
 
     private void commitChangeStreetNumber(Event e) {
+        TableColumn.CellEditEvent<User, Integer> ce;
+        ce = (TableColumn.CellEditEvent<User, Integer>) e;
+        User u = ce.getRowValue();
+        u.getAddress().setNumber(ce.getNewValue());
+        Database.update(u);
     }
 
     private void commitChangeStreet(Event e) {
+        TableColumn.CellEditEvent<User, String> ce;
+        ce = (TableColumn.CellEditEvent<User, String>) e;
+        User u = ce.getRowValue();
+        u.getAddress().setStreet(ce.getNewValue());
+        Database.update(u);
     }
 
     private void commitChangeIdentityCardSeries(Event e) {
@@ -177,7 +194,15 @@ public class UserController implements Initializable {
 
     @FXML
     public void deleteRecord(ActionEvent e) {
+        ObservableList<User> selected, items;
+        items = table.getItems();
+        selected = table.getSelectionModel().getSelectedItems();
+        Database.delete(selected.get(0));
+        ArrayList<User> data = UserRepository.getInstance().getData();
+        data.remove(selected.get(0));
+        items.remove(selected.get(0));
 
+        table.refresh();
     }
 
     @FXML
@@ -203,6 +228,7 @@ public class UserController implements Initializable {
         ce = (TableColumn.CellEditEvent<User, String>) e;
         User u = ce.getRowValue();
         u.setFirstName(ce.getNewValue());
+        Database.update(u);
     }
 
 

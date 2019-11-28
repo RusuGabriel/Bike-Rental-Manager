@@ -1,5 +1,6 @@
 package manager;
 
+import javafx.collections.ObservableList;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -28,8 +29,35 @@ public class Database {
         return instance;
     }
 
-    public boolean execute(String command) {
-        return true;
+    public static void delete(User selected){
+        if (selected==null)
+            return;
+        else
+            try {
+                Statement statement = instance.connection.createStatement();
+                String deleteSQL = "DELETE FROM [User] WHERE User_ID = ";
+                var i = statement.executeUpdate(deleteSQL + selected.getPrimaryKey() + ";");
+            } catch (SQLException e) {
+                System.out.println("DELETE statement failed!");
+                System.out.println(e.getStackTrace());
+                System.out.println(e.getMessage());
+            }
+    }
+
+    public static void delete(RentalInvoice selected) {
+        if (selected==null)
+            return;
+        else
+            try {
+                Statement statement = instance.connection.createStatement();
+                String deleteSQL = "DELETE FROM RentalInovice WHERE Rental_ID = ";
+                var i = statement.executeUpdate(deleteSQL + selected.getRentID() + ";");
+            } catch (SQLException e) {
+                System.out.println("DELETE statement failed!");
+                System.out.println(e.getStackTrace());
+                System.out.println(e.getMessage());
+            }
+
     }
 
     private static int getNumberOfColumns(ResultSet set) throws SQLException {
@@ -158,24 +186,7 @@ public class Database {
         }
     }
 
-    public static void update(String tableName, Bike updatedBike) {
-        try {
-            Statement statement = instance.connection.createStatement();
-            statement.executeUpdate("UPDATE BIKE");
-        } catch (SQLException e) {
 
-        }
-    }
-
-    public static void update(RentalInvoice ri) {
-        try {
-            Statement statement = instance.connection.createStatement();
-            statement.executeUpdate("update RentalInovice set " + ri.update() + " where  Rental_ID = " + ri.getRentID() + ";");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            System.out.println(e.getStackTrace());
-        }
-    }
 
     public static void saveTo(String tableName, User newData) {
         try {
@@ -198,6 +209,36 @@ public class Database {
                 newData.setRentID(resultSet.getInt(1));
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void update(User u) {
+        try {
+            Statement statement = instance.connection.createStatement();
+            System.out.println("update [User] set " + u.update() + " where  User_ID = " + u.getPrimaryKey() + ";");
+            statement.executeUpdate("update [User] set " + u.update() + " where  User_ID = " + u.getPrimaryKey() + ";");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }
+    }
+
+    public static void update(String tableName, Bike updatedBike) {
+        try {
+            Statement statement = instance.connection.createStatement();
+            statement.executeUpdate("UPDATE BIKE");
+        } catch (SQLException e) {
+
+        }
+    }
+
+    public static void update(RentalInvoice ri) {
+        try {
+            Statement statement = instance.connection.createStatement();
+            statement.executeUpdate("update RentalInovice set " + ri.update() + " where  Rental_ID = " + ri.getRentID() + ";");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
     }
 }
