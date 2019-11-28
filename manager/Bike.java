@@ -91,4 +91,13 @@ public class Bike {
         result.append(speed);
         return result.toString();
     }
+
+    public String update() {
+        StringBuilder result = new StringBuilder();
+        result.append("Brand_ID = "+bikeBrand.getPrimaryKey()+",");
+        result.append("Category_ID = "+bikeCategory.getPrimaryKey()+",");
+        result.append("Color = '"+color+"',");
+        result.append("Speeds = "+speed);
+        return result.toString();
+    }
 }

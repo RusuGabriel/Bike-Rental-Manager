@@ -223,12 +223,14 @@ public class Database {
         }
     }
 
-    public static void update(String tableName, Bike updatedBike) {
+    public static void update(Bike updatedBike) {
         try {
             Statement statement = instance.connection.createStatement();
-            statement.executeUpdate("UPDATE BIKE");
+            System.out.println("update bike");
+            statement.executeUpdate("UPDATE BIKE set "+updatedBike.update()+" where Bike_ID = "+updatedBike.getPrimaryKey()+";");
         } catch (SQLException e) {
-
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
         }
     }
 

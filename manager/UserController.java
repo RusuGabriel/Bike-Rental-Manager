@@ -144,15 +144,35 @@ public class UserController implements Initializable {
     }
 
     private void commitChangeIdentityCardSeries(Event e) {
+        TableColumn.CellEditEvent<User, String> ce;
+        ce = (TableColumn.CellEditEvent<User, String>) e;
+        User u = ce.getRowValue();
+        u.getUserCard().setSeries(ce.getNewValue());
+        Database.update(u);
     }
 
     private void commitChangeIdentityCardNumber(Event e) {
+        TableColumn.CellEditEvent<User, Integer> ce;
+        ce = (TableColumn.CellEditEvent<User, Integer>) e;
+        User u = ce.getRowValue();
+        u.getUserCard().setNumber(ce.getNewValue());
+        Database.update(u);
     }
 
     private void commitChangeCNP(Event e) {
+        TableColumn.CellEditEvent<User, String> ce;
+        ce = (TableColumn.CellEditEvent<User, String>) e;
+        User u = ce.getRowValue();
+        u.getUserCard().setCnp(ce.getNewValue());
+        Database.update(u);
     }
 
     private void commitChangeSecondName(Event e) {
+        TableColumn.CellEditEvent<User, String> ce;
+        ce = (TableColumn.CellEditEvent<User, String>) e;
+        User u = ce.getRowValue();
+        u.setSecondName(ce.getNewValue());
+        Database.update(u);
     }
 
     @FXML

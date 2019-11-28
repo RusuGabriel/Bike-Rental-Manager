@@ -109,7 +109,7 @@ public class BikeController implements Initializable {
 
     @FXML
     public void commitChangeCategory(Event e){
-
+        return;
     }
 
     @FXML
@@ -118,13 +118,7 @@ public class BikeController implements Initializable {
         ce = (TableColumn.CellEditEvent<Bike, Integer>) e;
         Bike b = ce.getRowValue();
         b.setSpeed(ce.getNewValue());
-        Thread update = new Thread(){
-            @Override
-            public void run() {
-                Database.update(TABLE_NAME,b);
-            }
-        };
-        update.start();
+        Database.update(b);
     }
 
     @FXML
@@ -133,6 +127,7 @@ public class BikeController implements Initializable {
         ce = (TableColumn.CellEditEvent<Bike, String>) e;
         Bike b = ce.getRowValue();
         b.setColor(ce.getNewValue());
+        Database.update(b);
     }
 
 
@@ -144,6 +139,12 @@ public class BikeController implements Initializable {
 
     @FXML
     public void commitChangeBrand(Event e) {
+        TableColumn.CellEditEvent<Bike, String> ce;
+        ce = (TableColumn.CellEditEvent<Bike, String>) e;
+        Bike b = ce.getRowValue();
+        b.getBikeBrand().setBrand(ce.getNewValue());
+        b.getBikeBrand().setPrimaryKey(BikeRepository.getKeyOf(ce.getNewValue()));
+        Database.update(b);
     }
 
     private void loadData(){
