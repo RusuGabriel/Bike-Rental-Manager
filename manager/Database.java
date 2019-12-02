@@ -270,5 +270,31 @@ public class Database {
     }
 
 
+    public static Integer getKeyOf(String newValue) {
+        try{
+            Statement statement = instance.connection.createStatement();
+            statement.executeUpdate("select Brand_ID from BikeBrands where BrandName = '"+newValue+"';");
+            //TODO: create a join statement to verify if a bike exists!!
+        }catch(SQLException e){
+
+        }
+        return  -1;
+    }
+
+    public static void delete(Bike selected) {
+        if (selected == null)
+            return;
+        else
+            try {
+                Statement statement = instance.connection.createStatement();
+                String deleteSQL = "DELETE FROM Bike WHERE Bike_ID = ";
+                var i = statement.executeUpdate(deleteSQL + selected.getPrimaryKey() + ";");
+            } catch (SQLException e) {
+                System.out.println("DELETE statement failed!");
+                System.out.println(e.getStackTrace());
+                System.out.println(e.getMessage());
+            }
+
+    }
 }
 

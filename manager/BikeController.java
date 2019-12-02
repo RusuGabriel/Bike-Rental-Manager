@@ -102,7 +102,7 @@ public class BikeController implements Initializable {
         ObservableList<Bike> selected, items;
         items = table.getItems();
         selected = table.getSelectionModel().getSelectedItems();
-
+        Database.delete(selected.get(0));
         for (Bike b : selected)
             items.remove(b);
     }
@@ -143,7 +143,7 @@ public class BikeController implements Initializable {
         ce = (TableColumn.CellEditEvent<Bike, String>) e;
         Bike b = ce.getRowValue();
         b.getBikeBrand().setBrand(ce.getNewValue());
-        b.getBikeBrand().setPrimaryKey(BikeRepository.getKeyOf(ce.getNewValue()));
+        b.getBikeBrand().setPrimaryKey(/**/BikeRepository.getKeyOf(ce.getNewValue())/**//*Database.getKeyOf(ce.getNewValue())*/);
         Database.update(b);
     }
 
