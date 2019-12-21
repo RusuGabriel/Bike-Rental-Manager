@@ -1,10 +1,7 @@
 package manager;
 
-import javafx.collections.ObservableList;
-
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class Database {
@@ -217,7 +214,7 @@ public class Database {
         try {
             Statement statement = instance.connection.createStatement();
             statement.executeUpdate("INSERT INTO [" + tableName + "] VALUES(" + newData + ")");
-            resultSet = statement.executeQuery("SELECT User_ID FROM [User] WHERE User_ID = @@Identity;");
+            resultSet = statement.executeQuery("SELECT U.User_ID , RI.Bike_ID FROM [User] U join RentalInovice RI on U.User_ID = RI.User_ID WHERE U.User_ID = @@Identity");
             if (resultSet.next())
                 newData.setPrimaryKey(resultSet.getInt(1));
         } catch (SQLException e) {
@@ -269,16 +266,20 @@ public class Database {
         }
     }
 
-
+    /**
+     * This method verify if a brand already exists in the database
+     * @param newValue
+     * @return the index of the newValue brand or -1 if not found
+     */
     public static Integer getKeyOf(String newValue) {
-        try{
+        try {
             Statement statement = instance.connection.createStatement();
-            statement.executeUpdate("select Brand_ID from BikeBrands where BrandName = '"+newValue+"';");
-            //TODO: create a join statement to verify if a bike exists!!
-        }catch(SQLException e){
+            statement.executeUpdate("select bb.Brand_ID , b.Price_ID from BikeBrands bb join Bike b on bb.Brand_ID = b.Brand_ID where BrandName = '" + newValue + "';");
+
+        } catch (SQLException e) {
 
         }
-        return  -1;
+        return -1;
     }
 
     public static void delete(Bike selected) {

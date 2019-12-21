@@ -7,14 +7,13 @@ public class BikeCategory {
     private String category;
 
     public BikeCategory() {
-        primaryKey=0;
-        category =null;
+        primaryKey = 0;
+        category = null;
     }
 
-    public BikeCategory(int pK,String category)
-    {
+    public BikeCategory(int pK, String category) {
         primaryKey = pK;
-        StringTokenizer stringT = new StringTokenizer(category,"' ");
+        StringTokenizer stringT = new StringTokenizer(category, "' ");
         this.category = stringT.nextToken();
     }
 
@@ -48,12 +47,12 @@ public class BikeCategory {
         else {
             BikeCategory bC = (BikeCategory) obj;
 
-            return bC.toString().equalsIgnoreCase(toString())||bC.getCategory().equalsIgnoreCase(getCategory());
+            return bC.toString().equalsIgnoreCase(toString()) || bC.getCategory().equalsIgnoreCase(getCategory());
         }
     }
 
     @Override
     public String toString() {
-        return "'"+category+"'";
+        return "'" + category + "'";
     }
 }
