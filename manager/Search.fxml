@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.SearchController">
+   <children>
+      <Separator layoutX="370.0" layoutY="4.0" orientation="VERTICAL" prefHeight="823.0" prefWidth="6.0" />
+      <ImageView fitHeight="114.0" fitWidth="332.0" layoutX="23.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="1016.4496765136719" AnchorPane.topAnchor="43.0">
+         <image>
+            <Image url="@../resources/images/bike-logo.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="table" layoutX="389.0" layoutY="42.0" prefHeight="775.0" prefWidth="924.0">
+        <columns>
+          <TableColumn fx:id="firstColumn" prefWidth="459.0" text="C1" />
+          <TableColumn fx:id="secondColumn" minWidth="0.0" prefWidth="458.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button id="round-red" layoutX="29.0" layoutY="252.0" mnemonicParsing="false" onAction="#loadRents2Hours" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../resources/styles/style.css" text="Rents &gt; 2hours">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button id="round-red" layoutX="29.0" layoutY="316.0" mnemonicParsing="false" onAction="#rentsOfRoadBikes" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../resources/styles/style.css" text="Rents of Road Bikes">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button id="round-red" layoutX="29.0" layoutY="382.0" mnemonicParsing="false" onAction="#rentsByCategory" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../resources/styles/style.css" text="Rents by Category">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button id="round-red" layoutX="29.0" layoutY="448.0" mnemonicParsing="false" onAction="#rentsByUsers" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../resources/styles/style.css" text="Rents by Users">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button id="round-red" layoutX="29.0" layoutY="517.0" mnemonicParsing="false" onAction="#goHome" prefHeight="51.0" prefWidth="302.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../resources/styles/style.css" text="Home">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

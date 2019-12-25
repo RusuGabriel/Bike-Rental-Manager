@@ -1,24 +1,19 @@
 package manager;
 
-import com.sun.javafx.scene.control.behavior.TextAreaBehavior;
-import javafx.fxml.*;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 
-import java.net.*;
-import java.sql.Time;
+import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import javafx.application.*;
-import javafx.stage.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.scene.text.*;
-import javafx.event.*;
-import javafx.scene.control.cell.*;
-import javafx.beans.property.*;
-import javafx.collections.*;
-import javafx.geometry.*;
-import javafx.util.converter.*;
 
 public class BikeController implements Initializable {
     public static final String TABLE_NAME = "Bike";
@@ -79,19 +74,18 @@ public class BikeController implements Initializable {
         b.setBikeBrand(bB);
         b.setBikeCategory(bC);
         table.getItems().add(b);
-        Thread add = new Thread(){
+        Thread add = new Thread() {
             @Override
             public void run() {
                 Database database = Database.getInstance();
-                database.saveTo(TABLE_NAME,b);
+                database.saveTo(TABLE_NAME, b);
             }
         };
         add.start();
         clearFields();
     }
 
-    private void clearFields()
-    {
+    private void clearFields() {
         brandTxt.clear();
         colorTxt.clear();
         categoryTxt.clear();
@@ -108,7 +102,7 @@ public class BikeController implements Initializable {
     }
 
     @FXML
-    public void commitChangeCategory(Event e){
+    public void commitChangeCategory(Event e) {
         return;
     }
 
@@ -147,10 +141,10 @@ public class BikeController implements Initializable {
         Database.update(b);
     }
 
-    private void loadData(){
+    private void loadData() {
         Thread loadThread = new Thread(() -> {
             Database database = Database.getInstance();
-            database.loadFrom(TABLE_NAME,BikeRepository.getInstance());
+            database.loadFrom(TABLE_NAME, BikeRepository.getInstance());
             table.getItems().addAll(BikeRepository.getInstance().getData());
         });
         loadThread.start();

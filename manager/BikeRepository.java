@@ -1,7 +1,5 @@
 package manager;
 
-import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 

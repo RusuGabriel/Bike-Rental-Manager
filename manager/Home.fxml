@@ -36,7 +36,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button id="round-red" layoutX="53.0" layoutY="270.0" mnemonicParsing="false" onAction="#goRentalInvoices" prefHeight="44.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@../resources/styles/style.css" text="Search">
+      <Button id="round-red" layoutX="53.0" layoutY="270.0" mnemonicParsing="false" onAction="#goSearch" prefHeight="44.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@../resources/styles/style.css" text="Search">
          <font>
             <Font size="24.0" />
          </font>

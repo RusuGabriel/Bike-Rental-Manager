@@ -268,6 +268,7 @@ public class Database {
 
     /**
      * This method verify if a brand already exists in the database
+     *
      * @param newValue
      * @return the index of the newValue brand or -1 if not found
      */
@@ -295,7 +296,43 @@ public class Database {
                 System.out.println(e.getStackTrace());
                 System.out.println(e.getMessage());
             }
+    }
 
+
+    public void load(int option, SearchResultRepository data) {
+        if (!data.getInstance().getData().isEmpty())
+            return;
+        try {
+            Statement statement = instance.connection.createStatement();
+            String selectSql = generateSelectByOption(option);
+            resultSet = statement.executeQuery(selectSql);
+
+            // Print results from select statement
+            while (resultSet.next()) {
+                for (int i = 1; i <= 2; i++) {
+                    attributes.add(resultSet.getString(i));
+                }
+                data.getInstance().getData().add(new SearchResult(attributes.toArray(String[]::new)));
+                attributes.clear();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String generateSelectByOption(int option) {
+        switch (option) {
+            case SearchController.LOADRENTS2HOURS:
+                return "SELECT U.First_Name + ' ' + U.Second_Name AS Name, U.City FROM [User] U WHERE User_ID IN (SELECT DISTINCT RI.User_ID FROM RentalInovice RI WHERE datediff(HOUR , RI.StartTime  ,RI.EndTime)> 2)";
+            case SearchController.RENTSBYCATEGORY:
+                return "SELECT DISTINCT BC.CategoryName, (SELECT COUNT(*) FROM RentalInovice RI join Bike B2 on RI.Bike_ID = B2.Bike_ID where b2.Category_ID = BC.Category_ID ) AS Inchirieri FROM Bike B JOIN BikeCategory BC on B.Category_ID = BC.Category_ID order by Inchirieri desc";
+            case SearchController.RENTSBYUSERS:
+                return "SELECT U.First_Name +' '+ U.Second_Name AS Name, (SELECT COUNT(*) FROM RentalInovice RI WHERE RI.User_ID = U.User_ID) AS 'Numar Inchirieri' FROM  [User] U;";
+            case SearchController.RENTSOFROADBIKES:
+                return "select  U.First_Name + ' ' + U.Second_Name AS Name, U.City from [User] U, (select RI.User_ID FROM RentalInovice RI join Bike B on RI.Bike_ID = B.Bike_ID join BikeCategory BC on B.Category_ID = BC.Category_ID WHERE BC.CategoryName = 'Road') AS RI_UID WHERE U.User_ID = RI_UID.User_ID;";
+        }
+        return null;
     }
 }
 

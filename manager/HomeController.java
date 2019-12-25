@@ -24,6 +24,11 @@ public class HomeController implements Initializable {
     }
 
     @FXML
+    private void goSearch(ActionEvent e){
+        GUI.getInstance().display(GUI.SEARCH);
+    }
+
+    @FXML
     private void goBicycleStock(ActionEvent e) {
         GUI.getInstance().display(GUI.REGISTERED_BIKES);
     }
