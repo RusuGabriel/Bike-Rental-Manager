@@ -51,4 +51,8 @@ public class HomeController implements Initializable {
         for (String elem : hashData.keySet())
             chartData.add(new PieChart.Data(elem, hashData.get(elem)));
     }
+
+    public void goLogIn(ActionEvent actionEvent) {
+        GUI.getInstance().display(GUI.LOG_IN);
+    }
 }

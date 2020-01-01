@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 
 public class GUI extends Application {
 
+
     private static Parent root;
     private static String[] resourceStrings;
     private static GUI instance;
@@ -19,9 +20,12 @@ public class GUI extends Application {
     //resources constant indices
     public static final int REGISTERED_BIKES = 0;
     public static final int HOME = 1;
-    public static final int REGISTERED_RENTS = 2;
-    public static final int SEARCH = 3;
-    public static final int REGISTERED_USERS = 4;
+    public static final int LOG_IN = 2;
+    public static final int CHANGE_PRICING = 3;
+    public static final int REGISTERED_RENTS = 4;
+    public static final int SEARCH = 5;
+    public static final int REGISTERED_USERS = 6;
+
 
     public static void main(String[] args) {
         loadResourcesFrom("D:\\Proiecte\\Bike Rental Manager\\src\\manager");
@@ -61,7 +65,7 @@ public class GUI extends Application {
     }
 
     private static boolean isInvalid(int option) {
-        return option < 0 || option > 5;
+        return option < 0 || option > 7;
     }
 
     /**

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" styleClass="root" stylesheets="@../resources/styles/light.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.HomeController">
@@ -41,22 +41,10 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Label layoutX="53.0" layoutY="604.0" text="App Apparence:">
+      <Button id="round-red" layoutX="51.0" layoutY="514.0" mnemonicParsing="false" onAction="#goLogIn" prefHeight="44.0" prefWidth="302.0" style="-fx-background-radius: 20px; -fx-border-radius: 20px;" stylesheets="@../resources/styles/style.css" text="Change Pricing" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="977.0">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font size="24.0" />
          </font>
-      </Label>
-      <Label layoutX="70.0" layoutY="639.0" text="Background Themes:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ChoiceBox layoutX="109.0" layoutY="666.0" prefHeight="31.0" prefWidth="190.0" />
-      <Label layoutX="70.0" layoutY="707.0" text="Buttons Themes:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ChoiceBox layoutX="109.0" layoutY="734.0" prefHeight="31.0" prefWidth="190.0" />
+      </Button>
    </children>
 </AnchorPane>

@@ -16,7 +16,7 @@
             <Image url="@../resources/images/bike-logo.png" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="389.0" layoutY="42.0" prefHeight="775.0" prefWidth="924.0">
+      <TableView fx:id="table" layoutX="389.0" layoutY="42.0" prefHeight="775.0" prefWidth="916.0">
         <columns>
           <TableColumn fx:id="firstColumn" prefWidth="459.0" text="C1" />
           <TableColumn fx:id="secondColumn" minWidth="0.0" prefWidth="458.0" text="C2" />

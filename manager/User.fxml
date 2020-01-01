@@ -146,8 +146,4 @@
          </font>
       </Label>
    </children>
-   <stylesheets>
-      <URL value="@../resources/styles/light.css" />
-      <URL value="@../resources/styles/dracula.css" />
-   </stylesheets>
 </AnchorPane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="830.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.PricingController">
+   <children>
+      <TableView fx:id="table" layoutX="64.0" layoutY="70.0" prefHeight="699.0" prefWidth="1208.0">
+        <columns>
+          <TableColumn fx:id="brandCol" prefWidth="165.0" text="Brand Name" />
+            <TableColumn fx:id="categoryCol" prefWidth="271.0" text="Category Name" />
+            <TableColumn fx:id="speedCol" prefWidth="284.0" text="No. Speeds" />
+            <TableColumn fx:id="colorCol" prefWidth="259.0" text="Color" />
+          <TableColumn fx:id="priceCol" prefWidth="227.0" text="Price" />
+        </columns>
+      </TableView>
+      <Label layoutX="588.0" layoutY="27.0" text="Change Pricing">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="1209.0" layoutY="792.0" mnemonicParsing="false" onAction="#goHome" prefHeight="23.0" prefWidth="63.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" text="Home">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

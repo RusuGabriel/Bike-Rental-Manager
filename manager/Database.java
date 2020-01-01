@@ -298,6 +298,16 @@ public class Database {
             }
     }
 
+    public static void update(BikePrice b) {
+        try {
+            Statement statement = instance.connection.createStatement();
+            statement.executeUpdate("UPDATE Price set PricePerHour = "+b.getPrice()+" where Price_ID = (select b.Price_ID from Bike b where b.Bike_ID = "+b.getPk() +"); ");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getStackTrace());
+        }
+    }
+
 
     public void load(int option, SearchResultRepository data) {
         if (!data.getInstance().getData().isEmpty())
@@ -333,6 +343,33 @@ public class Database {
                 return "select  U.First_Name + ' ' + U.Second_Name AS Name, U.City from [User] U, (select RI.User_ID FROM RentalInovice RI join Bike B on RI.Bike_ID = B.Bike_ID join BikeCategory BC on B.Category_ID = BC.Category_ID WHERE BC.CategoryName = 'Road') AS RI_UID WHERE U.User_ID = RI_UID.User_ID;";
         }
         return null;
+    }
+
+    public void loadFrom(BikePriceRepository data) {
+        if (!data.getInstance().getData().isEmpty())
+            return;
+        int columnsNumber = 0;
+
+        try {
+            Statement statement = instance.connection.createStatement();
+            String selectSql = "select Bike_ID,bb.BrandName,BC.CategoryName,b.Color,P.PricePerHour from Bike b join BikeBrands BB on b.Brand_ID = BB.Brand_ID join BikeCategory BC on b.Category_ID = BC.Category_ID join Price P on b.Price_ID = P.Price_ID";
+            resultSet = statement.executeQuery(selectSql);
+
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            columnsNumber = rsmd.getColumnCount();
+
+            // Print results from select statement
+            while (resultSet.next()) {
+                for (int i = 1; i <= columnsNumber; i++) {
+                    attributes.add(resultSet.getString(i));
+                }
+                data.getInstance().getData().add(new BikePrice(attributes.toArray(String[]::new)));
+                attributes.clear();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 

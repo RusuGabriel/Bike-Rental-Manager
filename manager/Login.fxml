@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manager.LoginController">
+   <children>
+      <ImageView fitHeight="227.0" fitWidth="291.0" layoutX="39.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="29.0">
+         <image>
+            <Image url="@../resources/images/bike-logo.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="password" layoutX="491.0" layoutY="391.0" prefHeight="31.0" prefWidth="460.0" />
+      <Label layoutX="343.0" layoutY="389.0" text="Password:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="340.0" layoutY="319.0" text="Username:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="username" layoutX="491.0" layoutY="321.0" prefHeight="31.0" prefWidth="460.0" />
+      <Button id="round-red" layoutX="522.0" layoutY="467.0" mnemonicParsing="false" onAction="#goHome" prefHeight="51.0" prefWidth="120.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../resources/styles/style.css" text="Home">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button id="round-red" layoutX="702.0" layoutY="467.0" mnemonicParsing="false" onAction="#goToPricing" prefHeight="51.0" prefWidth="120.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../resources/styles/style.css" text="Log in">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="text" layoutX="281.0" layoutY="217.0" text="To change the pricing you will need to login first">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
