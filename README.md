@@ -17,4 +17,4 @@ A step by step series of examples that tell you how to get a development env run
 
 
 ## Preview 
-<img src="https://github.com/RusuGabriel/BikeRentalManager/blob/master/resources/images/Preview.png">
+<img src="/resources/images/Preview.png">
