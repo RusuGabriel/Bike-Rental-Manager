@@ -28,13 +28,15 @@ public class GUI extends Application {
 
 
     public static void main(String[] args) {
-        loadResourcesFrom("D:\\Proiecte\\Bike Rental Manager\\src\\manager");
+        System.out.println(System.getProperty("user.dir"));
+        loadResourcesFrom("D:\\Projects\\Github\\Personal\\Bike-Rental-Manager\\src\\main\\java\\manager");
         launch(args);
     }
 
     private static void loadResourcesFrom(String pathname) {
         File currentDirectory = new File(pathname);
         File[] resources = currentDirectory.listFiles((name) -> {
+            System.out.println(name);
             return name.getName().contains(".fxml");
         });
         resourceStrings = new String[resources.length];
@@ -59,7 +61,8 @@ public class GUI extends Application {
             guiStage.setScene(scene);
             guiStage.show();
         } catch (Exception e) {
-            System.out.println("Nu merge:");
+            System.out.println("The error message is:");
+            System.out.println(e.getMessage());
             System.out.println(e.getStackTrace());
         }
     }
