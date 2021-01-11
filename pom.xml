@@ -67,7 +67,7 @@
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-media</artifactId>
-      <version>12</version>
+      <version>15.0.1</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
     <dependency>
